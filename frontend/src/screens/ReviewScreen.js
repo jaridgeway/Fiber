@@ -49,7 +49,7 @@ function ReviewScreen() {
           <ListGroup variant="flush">
             <ListGroup.Item>
               {splices.length === 0 ? (
-                <Message variant="info">No Splices Documented</Message>
+                <Message variant="info">No More Splices to Document</Message>
               ) : (
                 <ListGroup variant="flush">
                   {splices.map((item, index) => (

@@ -67,30 +67,29 @@ function HomeScreen() {
     }
   };
 
-  console.log(tube1);
 
   const handleSplice = () => {
     const fiberList = lineList
       .map((e, i) => (e.clicked === true ? i + 1 : undefined))
       .filter((x) => x);
     const cableid =
-      fiberList[0] < 12
+      fiberList[0] < 13
         ? cable1.value
-        : fiberList[0] < 24
+        : fiberList[0] < 25
         ? cable2.value
         : cable3.value;
 
     const cableid2 =
-      fiberList[1] < 12
+      fiberList[1] < 13
         ? cable1.value
-        : fiberList[1] < 24
+        : fiberList[1] < 25
         ? cable2.value
         : cable3.value;
 
     const tubeid =
-      fiberList[0] < 12 ? tube1 : fiberList[0] < 24 ? tube2 : tube3;
+      fiberList[0] < 13 ? tube1 : fiberList[0] < 25 ? tube2 : tube3;
     const tubeid2 =
-      fiberList[1] < 12 ? tube1 : fiberList[1] < 24 ? tube2 : tube3;
+      fiberList[1] < 13 ? tube1 : fiberList[1] < 25 ? tube2 : tube3;
 
     dispatch(addSplice({ cableid, cableid2, fiberList, tubeid, tubeid2 }));
     setLineList(() => {
@@ -99,7 +98,6 @@ function HomeScreen() {
     });
   };
 
-  console.log(cable1);
 
   const classes = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
 
@@ -379,7 +377,7 @@ function HomeScreen() {
       {lineList.map(
         (line, i) =>
           line.clicked == true && (
-            <div>
+            <div key={i}>
               {i < 12 ? (
                 <LineTo
                   borderWidth={7}

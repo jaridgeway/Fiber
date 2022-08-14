@@ -7,6 +7,8 @@ from rest_framework import status
 from base.serializers import CableSerializer, SpliceSerializer
 from base.models import Cable, Event,FiberSplice
 
+from datetime import datetime
+
 
 
 @api_view(['GET'])

@@ -14,7 +14,7 @@ class Event(models.Model):
     _id = models.AutoField(primary_key=True, editable=False)
 
     def __str__(self):
-        return str(self._id)
+        return str(self.createdAt)
 
 
 
@@ -24,13 +24,13 @@ class Cable(models.Model):
     cableDescriptor = models.TextField(null=True,blank=True)
     _id = models.AutoField(primary_key=True, editable=False)
     def __str__(self):
-        return str(self.cableID)
+        return str(self.cableDescriptor)
 
 class Tube(models.Model):
     cable=models.ForeignKey(Cable, on_delete=models.SET_NULL, null=True)
     color=models.CharField(max_length=200,null=True,blank=True)
     def __str__(self):
-        return self.color
+        return str(self.color+" "+self.cable.cableDescriptor)
 
 
 class FiberSplice(models.Model):
@@ -49,6 +49,6 @@ class FiberSplice(models.Model):
     createdAt = models.DateTimeField(auto_now_add=True)
     _id = models.AutoField(primary_key=True, editable=False)
     def __str__(self):
-        return str(self._id)
+        return str(self.cableID.cableDescriptor+" "+self.tube1+ " tube #" + str(self.fiber1)+" spliced to "+self.cableID2.cableDescriptor+" "+self.tube2+ " tube #" + str(self.fiber2))
 
 
